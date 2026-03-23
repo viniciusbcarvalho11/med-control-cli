@@ -28,7 +28,7 @@ def mark_taken():
         index = int(input("Digite o índice: "))
         medications[index].mark_as_taken()
         print("Marcado como tomado!")
-    except:
+    except Exception:
         print("Erro!")
 
 def menu():
