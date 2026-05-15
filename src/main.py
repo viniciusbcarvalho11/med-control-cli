@@ -1,6 +1,8 @@
 from src.medication import Medication
+from src.api_client import search_medication_info
 
 medications = []
+
 
 def add_medication():
     name = input("Nome do medicamento: ")
@@ -14,6 +16,11 @@ def add_medication():
     medications.append(med)
     print("Medicamento adicionado!")
 
+    print("Buscando informações na Open FDA...")
+    info = search_medication_info(name)
+    print(info)
+
+
 def list_medications():
     if not medications:
         print("Nenhum medicamento cadastrado.")
@@ -21,6 +28,7 @@ def list_medications():
 
     for i, med in enumerate(medications):
         print(f"{i} - {med}")
+
 
 def mark_taken():
     list_medications()
@@ -30,6 +38,7 @@ def mark_taken():
         print("Marcado como tomado!")
     except Exception:
         print("Erro!")
+
 
 def menu():
     while True:
@@ -50,6 +59,7 @@ def menu():
             break
         else:
             print("Opção inválida!")
+
 
 if __name__ == "__main__":
     menu()
